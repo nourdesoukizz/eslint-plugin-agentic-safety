@@ -1,5 +1,8 @@
 # eslint-plugin-agentic-safety
 
+[![npm version](https://img.shields.io/npm/v/eslint-plugin-agentic-safety.svg)](https://www.npmjs.com/package/eslint-plugin-agentic-safety)
+[![license](https://img.shields.io/npm/l/eslint-plugin-agentic-safety.svg)](https://github.com/nourdesouki/eslint-plugin-agentic-safety/blob/main/LICENSE)
+
 ESLint plugin enforcing reliability and safety patterns for agentic AI codebases. Catches silent LLM failures, unbounded loops, fire-and-forget calls, and missing observability in autonomous execution paths.
 
 ## Installation
@@ -9,6 +12,8 @@ npm install eslint-plugin-agentic-safety --save-dev
 ```
 
 **Peer dependency:** ESLint >= 9.0.0 (flat config)
+
+**Requirements:** Node.js >= 18.18.0
 
 ## Quick Start
 
