@@ -7,7 +7,9 @@ ESLint plugin enforcing reliability and safety patterns for agentic AI codebases
 
 ## Demo
 
-https://github.com/nourdesouki/eslint-plugin-agentic-safety/raw/main/video/out/video.mp4
+<video src="video/out/video.mp4" controls width="100%">
+  Your browser does not support the video tag.
+</video>
 
 > *60-second overview: what the plugin catches and how to install it.*
 
