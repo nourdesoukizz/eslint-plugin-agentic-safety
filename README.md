@@ -5,6 +5,12 @@
 
 ESLint plugin enforcing reliability and safety patterns for agentic AI codebases. Catches silent LLM failures, unbounded loops, fire-and-forget calls, and missing observability in autonomous execution paths.
 
+## Demo
+
+https://github.com/user-attachments/assets/placeholder
+
+> *60-second overview: what the plugin catches and how to install it.*
+
 ## Installation
 
 ```bash
