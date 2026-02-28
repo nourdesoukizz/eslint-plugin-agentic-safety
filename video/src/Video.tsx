@@ -1,5 +1,5 @@
 import React from "react";
-import { AbsoluteFill, Sequence } from "remotion";
+import { AbsoluteFill, Audio, Sequence, staticFile } from "remotion";
 import { TitleScene } from "./scenes/TitleScene";
 import { ProblemScene } from "./scenes/ProblemScene";
 import { RuleScene } from "./scenes/RuleScene";
@@ -45,9 +45,46 @@ const rules = [
   },
 ];
 
+// Scene transition frames where whoosh plays
+const sceneTransitions = [0, 150, 360, 540, 720, 900, 1080, 1260, 1440, 1650];
+
+// Frames where good code is revealed (bad→good transition in each RuleScene)
+const chimeFrames = [
+  360 + 115, 540 + 115, 720 + 115, 900 + 115, 1080 + 115, 1260 + 115,
+];
+
 export const Video: React.FC = () => {
   return (
     <AbsoluteFill style={{ backgroundColor: "#0D1117" }}>
+      {/* Background music — full duration, lower volume */}
+      <Audio src={staticFile("audio/bg-music.mp3")} volume={0.4} />
+
+      {/* Whoosh on each scene transition */}
+      {sceneTransitions.map((frame) => (
+        <Sequence key={`whoosh-${frame}`} from={frame} durationInFrames={15}>
+          <Audio src={staticFile("audio/whoosh.mp3")} volume={0.6} />
+        </Sequence>
+      ))}
+
+      {/* Chime when good code is revealed */}
+      {chimeFrames.map((frame) => (
+        <Sequence key={`chime-${frame}`} from={frame} durationInFrames={20}>
+          <Audio src={staticFile("audio/chime.mp3")} volume={0.5} />
+        </Sequence>
+      ))}
+
+      {/* Click sounds during typing scenes (ProblemScene + InstallScene) */}
+      {Array.from({ length: 12 }, (_, i) => 150 + 3 + i * 3).map((frame) => (
+        <Sequence key={`click-problem-${frame}`} from={frame} durationInFrames={3}>
+          <Audio src={staticFile("audio/click.mp3")} volume={0.25} />
+        </Sequence>
+      ))}
+      {Array.from({ length: 18 }, (_, i) => 1440 + 20 + i * 3).map((frame) => (
+        <Sequence key={`click-install-${frame}`} from={frame} durationInFrames={3}>
+          <Audio src={staticFile("audio/click.mp3")} volume={0.25} />
+        </Sequence>
+      ))}
+
       {/* Scene 1: Title — 0-5s (frames 0-149) */}
       <Sequence from={0} durationInFrames={150}>
         <TitleScene />
