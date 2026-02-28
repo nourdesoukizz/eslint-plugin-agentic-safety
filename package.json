@@ -1,0 +1,55 @@
+{
+  "name": "eslint-plugin-agentic-safety",
+  "version": "0.1.0",
+  "description": "ESLint plugin enforcing reliability and safety patterns for agentic AI codebases",
+  "keywords": [
+    "eslint",
+    "eslintplugin",
+    "eslint-plugin",
+    "agentic",
+    "ai-safety",
+    "llm",
+    "agent"
+  ],
+  "license": "MIT",
+  "author": "Nour Desouki",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "test": "vitest run",
+    "test:smoke": "npm run build && vitest run tests/smoke/",
+    "test:watch": "vitest",
+    "lint": "eslint src/",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "@typescript-eslint/utils": "^8.56.0",
+    "minimatch": "^10.0.0"
+  },
+  "devDependencies": {
+    "@typescript-eslint/parser": "^8.56.0",
+    "@typescript-eslint/rule-tester": "^8.56.0",
+    "eslint": "^9.18.0",
+    "tsup": "^8.4.0",
+    "typescript": "~5.7.3",
+    "vitest": "^3.0.0"
+  },
+  "peerDependencies": {
+    "eslint": ">=9.0.0"
+  },
+  "engines": {
+    "node": ">=18.18.0"
+  }
+}
